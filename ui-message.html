@@ -60,7 +60,7 @@
   ClockCalendar.createdCallback = function() {
     var root = this.createShadowRoot();
     root.appendChild(tmpl.content.cloneNode(true));
-    var clockCalendar = document.querySelector('#clock');
+    var clockCalendar = document.querySelector('clock-caledar');
     var div = document.createElement('DIV');
     var body = document.querySelector('body');
     var showSeconds = true;
