@@ -32,7 +32,7 @@
     </div>
   </template>
 
-  <script>
+  <!-- <script>
     ! function() {
       var localDocument = document.currentScript.ownerDocument;
       var tmpl = localDocument.getElementById('tmpl');
@@ -48,8 +48,25 @@
         prototype: MessageProto
       });
     }();
-  </script>
+  </script> -->
 
+<script>
+! function() {
+  var localDocument = document.currentScript.ownerDocument;
+  var tmpl = localDocument.getElementById('tmpl');
+
+  var ClockCalendar = Object.create(HTMLElement.prototype);
+
+  ClockCalendar.createdCallback = function() {
+    var root = this.createShadowRoot();
+    root.appendChild(tmpl.content.cloneNode(true));
+  };
+
+  document.registerElement('clock-caledar', {
+    prototype: ClockCalendar
+  });
+}();
+</script>
 </body>
 
 </html>
