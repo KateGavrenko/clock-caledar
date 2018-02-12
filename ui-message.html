@@ -5,7 +5,15 @@
 
   <template id="tmpl">
     <style>
-
+      .content {
+        min-height: 20px;
+        padding: 19px;
+        margin-bottom: 20px;
+        background-color: #f5f5f5;
+        border: 1px solid #e3e3e3;
+        border-radius: 4px;
+        box-shadow: inset 0 1px 1px rgba(0, 0, 0, .05);
+      }
 
       :host {
         display: block;
@@ -35,7 +43,7 @@
   ClockCalendar.createdCallback = function() {
     var root = this.createShadowRoot();
     root.appendChild(tmpl.content.cloneNode(true));
-    // var root = document.querySelector('clock-caledar content');
+    var clockCalendar = document.querySelector('clock-caledar');
     var div = document.createElement('DIV');
     var body = document.querySelector('body');
     var showSeconds = true;
@@ -91,7 +99,7 @@
         clock = hours + ':'+ minutes  + ':'+ seconds;
       }
 
-      root.textContent = clock;
+      clockCalendar.innerHTML = clock;
     }
     function updateCalendar () {
       createVariable();
@@ -103,7 +111,7 @@
         calendar = day + ':'+ months  + ':'+ years;
       }
 
-      root.textContent = calendar;
+      clockCalendar.innerHTML = calendar;
     }
       //
       // result.appendChild(div);
@@ -135,8 +143,6 @@
         dateFormat = !dateFormat;
         console.log('click');
       })
-
-      // root.appendChild(tmpl.content.cloneNode(true));
     };
 
       document.registerElement('clock-caledar', {
