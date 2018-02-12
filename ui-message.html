@@ -118,22 +118,18 @@
 
       clockCalendar.innerHTML = clock;
     }
+    function updateCalendar () {
+      createVariable();
+      addZero();
 
-      // result.appendChild(div);
-
-
-      function updateCalendar () {
-        createVariable();
-        addZero();
-
-        if (dateFormat) {
-          calendar = months + '/'+ day + '/'+ years;
-        } else {
-          calendar = day + ':'+ months  + ':'+ years;
-        }
-
-        clockCalendar.innerHTML = calendar;
+      if (dateFormat) {
+        calendar = months + '/'+ day + '/'+ years;
+      } else {
+        calendar = day + ':'+ months  + ':'+ years;
       }
+
+      clockCalendar.innerHTML = calendar;
+    }
       //
       // result.appendChild(div);
 
@@ -164,10 +160,11 @@
         dateFormat = !dateFormat;
         console.log('click');
       })
+    };
 
-  document.registerElement('clock-caledar', {
-    prototype: ClockCalendar
-  });
+      document.registerElement('clock-caledar', {
+        prototype: ClockCalendar
+      });
 }();
 </script>
 </body>
