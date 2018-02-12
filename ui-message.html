@@ -34,8 +34,8 @@
 
   ClockCalendar.createdCallback = function() {
     var root = this.createShadowRoot();
-    root.appendChild(tmpl.content.cloneNode(true));
-    var clockCalendar = document.querySelector('clock-caledar content');
+    // root.appendChild(tmpl.content.cloneNode(true));
+    // var root = document.querySelector('clock-caledar content');
     var div = document.createElement('DIV');
     var body = document.querySelector('body');
     var showSeconds = true;
@@ -91,7 +91,7 @@
         clock = hours + ':'+ minutes  + ':'+ seconds;
       }
 
-      clockCalendar.innerHTML = clock;
+      root.textContent = clock;
     }
     function updateCalendar () {
       createVariable();
@@ -103,7 +103,7 @@
         calendar = day + ':'+ months  + ':'+ years;
       }
 
-      clockCalendar.innerHTML = calendar;
+      root.textContent = calendar;
     }
       //
       // result.appendChild(div);
@@ -135,6 +135,8 @@
         dateFormat = !dateFormat;
         console.log('click');
       })
+
+      root.appendChild(tmpl.content.cloneNode(true));
     };
 
       document.registerElement('clock-caledar', {
