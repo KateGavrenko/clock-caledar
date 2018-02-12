@@ -1,0 +1,43 @@
+@font-face{
+
+font-family: 'Digital';
+
+src: url('../fonts/digital-7.ttf ');
+
+src: url('../fonts/digital-7(italic).ttf '),
+
+url('../fonts/digital-7(mono).ttf '),
+
+url('../fonts/digital-7(monoitalic).ttf');
+
+font-weight: normal;
+
+font-style: normal;
+}
+
+body{
+  height: 100vh;
+  background-color: #000;
+  -webkit-align-items: center;
+  align-items: center;
+  display: flex;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+
+body:hover{
+  background-color: #866ced;
+}
+
+/*#3415B0 strange square*/
+
+body:hover clock-caledar{
+  color: #FFE573;
+}
+
+clock-caledar{
+  color: #fff;
+  font-family: 'Digital';
+  font-size: 60px;
+  text-align: center;
+}
