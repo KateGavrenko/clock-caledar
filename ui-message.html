@@ -34,7 +34,7 @@
 
   ClockCalendar.createdCallback = function() {
     var root = this.createShadowRoot();
-    // root.appendChild(tmpl.content.cloneNode(true));
+    root.appendChild(tmpl.content.cloneNode(true));
     // var root = document.querySelector('clock-caledar content');
     var div = document.createElement('DIV');
     var body = document.querySelector('body');
@@ -136,7 +136,7 @@
         console.log('click');
       })
 
-      root.appendChild(tmpl.content.cloneNode(true));
+      // root.appendChild(tmpl.content.cloneNode(true));
     };
 
       document.registerElement('clock-caledar', {
