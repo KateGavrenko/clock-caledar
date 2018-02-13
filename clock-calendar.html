@@ -26,8 +26,8 @@
 
         ClockCalendar.createdCallback = function() {
           console.log("created");
-          this.root = this.createShadowRoot();
-          this.root.appendChild(tmpl.content.cloneNode(true));
+          root = this.createShadowRoot();
+          root.appendChild(tmpl.content.cloneNode(true));
           let body = document.querySelector('body');
 
 
@@ -85,7 +85,7 @@
           } else {
             clock = this.hours + ':' + this.minutes + ':' + this.seconds;
           }
-          this.root.innerHTML = clock;
+          tpml.innerHTML = clock;
         }
 
         ClockCalendar.updateCalendar = function() {
@@ -97,7 +97,7 @@
           } else {
             calendar = this.day + ':' + this.months  + ':' + this.years;
           }
-          this.root.innerHTML = calendar;
+          this.innerHTML = calendar;
         }
 
         ClockCalendar.refresh = function() {
