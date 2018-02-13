@@ -2,7 +2,14 @@
 <html>
 
   <body>
-
+    <style>
+        .content{
+            color: #fff;
+            font-family: 'Digital';
+            font-size: 60px;
+            text-align: center;
+        }
+    </style>
     <template id="tmpl">
       <div class="content">
         <content></content>
@@ -16,6 +23,24 @@
         var tmpl = localDocument.getElementById('tmpl');
 
         var ClockCalendar = Object.create(HTMLElement.prototype);
+
+        ClockCalendar.createdCallback = function() {
+          console.log("created");
+          this.root = this.createShadowRoot();
+          root.appendChild(tmpl.content.cloneNode(true));
+          let body = document.querySelector('body');
+
+
+          body.oncontextmenu = function () {
+            return false;
+          };
+
+          setInterval(this.refresh.bind(this), 1000);
+
+          body.addEventListener("contextmenu", this.onRightClick.bind(this));
+
+          body.addEventListener("click", this.onLeftClick.bind(this));
+        };
 
         ClockCalendar.createVariable = function() {
           let date = new Date();
@@ -60,7 +85,7 @@
           } else {
             clock = this.hours + ':' + this.minutes + ':' + this.seconds;
           }
-          this.innerHTML = clock;
+          this.root.innerHTML = clock;
         }
 
         ClockCalendar.updateCalendar = function() {
@@ -72,7 +97,7 @@
           } else {
             calendar = this.day + ':' + this.months  + ':' + this.years;
           }
-          this.innerHTML = calendar;
+          this.root.innerHTML = calendar;
         }
 
         ClockCalendar.refresh = function() {
@@ -86,25 +111,6 @@
         ClockCalendar.showSeconds = true;
         ClockCalendar.dateFormat = true;
         ClockCalendar.mode = 'clock';
-
-        ClockCalendar.createdCallback = function() {
-          console.log("created");
-          let root = this.createShadowRoot();
-          root.appendChild(tmpl.content.cloneNode(true));
-          let div = document.createElement('DIV');
-          let body = document.querySelector('body');
-
-
-          body.oncontextmenu = function () {
-            return false;
-          };
-
-          setInterval(this.refresh.bind(this), 1000);
-
-          body.addEventListener("contextmenu", this.onRightClick.bind(this));
-
-          body.addEventListener("click", this.onLeftClick.bind(this));
-        };
 
         ClockCalendar.onLeftClick = function() {
             this.showSeconds = !this.showSeconds;
