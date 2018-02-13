@@ -3,7 +3,7 @@
 
   <body>
     <style>
-        .content{
+          :host .content{
             color: #fff;
             font-family: 'Digital';
             font-size: 60px;
@@ -25,9 +25,10 @@
         var ClockCalendar = Object.create(HTMLElement.prototype);
 
         ClockCalendar.createdCallback = function() {
-          console.log("created");
-          root = this.createShadowRoot();
-          root.appendChild(tmpl.content.cloneNode(true));
+          let shadowRoot = this.createShadowRoot();
+          let root = document.importNode(tmpl, true);
+          shadowRoot.appendChild(root);
+          this.content = shadowRoot.querySelector('content');
           let body = document.querySelector('body');
 
 
@@ -85,7 +86,7 @@
           } else {
             clock = this.hours + ':' + this.minutes + ':' + this.seconds;
           }
-          tpml.innerHTML = clock;
+          this.content.innerHTML = clock;
         }
 
         ClockCalendar.updateCalendar = function() {
@@ -97,7 +98,7 @@
           } else {
             calendar = this.day + ':' + this.months  + ':' + this.years;
           }
-          this.innerHTML = calendar;
+          this.content.innerHTML = calendar;
         }
 
         ClockCalendar.refresh = function() {
