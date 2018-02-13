@@ -20,7 +20,7 @@
     <script>
       ! function() {
         var localDocument = document.currentScript.ownerDocument;
-        var tmpl = localDocument.getElementById('tmpl');
+        var tmpl = thisDocument.querySelector('#tmpl').content;
 
         var ClockCalendar = Object.create(HTMLElement.prototype);
 
