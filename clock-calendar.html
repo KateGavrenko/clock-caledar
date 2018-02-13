@@ -27,7 +27,7 @@
         ClockCalendar.createdCallback = function() {
           console.log("created");
           this.root = this.createShadowRoot();
-          root.appendChild(tmpl.content.cloneNode(true));
+          this.root.appendChild(tmpl.content.cloneNode(true));
           let body = document.querySelector('body');
 
 
